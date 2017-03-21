@@ -1,0 +1,107 @@
+<div class="row" ng-init ="init()">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Register a patient here
+                        </h1>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <div class="row">
+                    <div class="col-lg-6">
+
+                        <form role="form" name="patientForm" ng-submit="submitForm(patientForm.$valid)" novalidate>
+
+                            <div class="form-group" ng-class="{'has-error': (patientForm.firstName.$invalid && showErrorMessages)}">
+                                <label>Patient First Name</label>
+                                <input class="form-control" name="firstName" placeholder="first name" ng-model="patient.firstName" ng-required="true" ng-pattern="/^[a-zA-Z]*$/">
+                                <!-- <p class="help-block">Example block-level help text here.</p> -->
+                                <span ng-show="showErrorMessages">
+                                <p ng-show="patientForm.firstName.$error.required" class="help-block">First name is required</p>
+                                <p ng-show="patientForm.firstName.$error.pattern" class="help-block">No numbers and special characters!</p>
+                                </span>
+                            </div>
+                            
+                            <div class="form-group" ng-class="{'has-error': (patientForm.middleName.$invalid && showErrorMessages)}">
+                                <label>Patient Middle Name</label>
+                                <input class="form-control" name="middleName" placeholder="middle name" ng-model="patient.middleName" ng-required="false" ng-pattern="/^[a-zA-Z]*$/">
+                                <span ng-show="showErrorMessages">
+                                <p ng-show="patientForm.middleName.$error.pattern" class="help-block">No numbers and special characters!</p>
+                            	</span>
+                            </div>
+                            
+                            <div class="form-group" ng-class="{'has-error': (patientForm.lastName.$invalid && showErrorMessages)}">
+                                <label>Patient Last Name</label>
+                                <input class="form-control" name="lastName" placeholder="last name" ng-model="patient.lastName" ng-required="true" ng-pattern="/^[a-zA-Z]*$/">
+                                <span ng-show="showErrorMessages">
+                                <p ng-show="patientForm.lastName.$error.required" class="help-block">Last name is required</p>
+                                <p ng-show="patientForm.lastName.$error.pattern" class="help-block">No numbers and special characters!</p>
+                            	</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <div class="input-group">
+                                <input type="text" name="dob" class="form-control" uib-datepicker-popup ng-model="patient.dob" is-open="datePopup.opened" datepicker-options="dateOptions" ng-required="true" readonly="readonly" show-button-bar="false"/>
+                            	<span class="input-group-btn">
+            						<button type="button" class="btn btn-default" ng-click="openDatePick()"><i class="glyphicon glyphicon-calendar"></i></button>
+          						</span>
+          						</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Age</label>
+                                <p class="form-control-static">{{ patient.dob | ageFilter }}</p>
+                            </div>
+
+                            
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="gender" id="gender1" value="male" ng-model="patient.gender" checked>Male
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="gender" id="gender2" value="female" ng-model="patient.gender">Female
+                                </label>
+                            </div>
+
+                            <div class="form-group" ng-class="{'has-error': (patientForm.address.$invalid && showErrorMessages)}">
+                                <label>Address</label>
+                                <textarea name="address" name="address" class="form-control" rows="3" ng-model="patient.address" ng-pattern="/^[ A-Za-z0-9\s/#;-]*$/" ng-required="true" ng-maxlength="300"></textarea>
+                            	<span ng-show="showErrorMessages">
+                            	<p ng-show="patientForm.address.$error.required && showErrorMessages" class="help-block">Address is required</p>
+  								<p ng-show="patientForm.address.$error.maxlength && showErrorMessages" class="help-block">Address is too long.</p>
+  								<p ng-show="patientForm.address.$error.pattern && showErrorMessages" class="help-block">Address should not contain special characters.</p>	
+                            	</span>
+                            	<!-- <p ng-show="patientForm.address.$invalid && !patientForm.address.$pristine" class="help-block">Please enter valid address</p> -->
+                            </div>
+                            <div class="form-group" ng-class="{'has-error': (patientForm.phNum.$invalid && showErrorMessages)}">
+                                <label>Phone Number</label>
+                                <div class="input-group">
+                                <span class="input-group-addon">+91</span>
+                                <input type="text" class="form-control" name="phNum" placeholder="Phone number" ng-model="patient.phNum" ng-pattern="phoneNumberPattern" ng-minlength="10" ng-maxlength="10" ng-required="true">
+                                </div>
+                                <span ng-show="showErrorMessages">
+                                <p ng-show="(patientForm.phNum.$error.maxlength ||patientForm.phNum.$error.minlength || patientForm.phNum.$error.pattern) && showErrorMessages" class="help-block">Not a valid phone number</p>
+                                <p ng-show="patientForm.phNum.$error.required && showErrorMessages" class="help-block">Phone number is required</p>
+                            	</span>
+                            </div>
+                            <div class="form-group">
+                                <label>Care Specialization</label>
+                                <select class="form-control" ng-model="patient.careSpec" ng-options="o as o for o in careSpecs">
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Photo</label>
+                                <input type="file" ng-model="patient.imageProof" accept="image/jpeg" app-filereader>
+                            </div>
+
+                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="reset" class="btn btn-default" ng-click="resetForm()">Reset</button>
+
+                        </form>
+
+                    </div>
+                </div>
+                <!-- /.row -->

@@ -1,0 +1,37 @@
+<div style="padding: 16px 5px;" ng-init ="init()">
+<div class="table-responsive">
+<table st-table="displayedCollection" st-safe-src="rowCollection" st-sticky-header class="table table-bordered">
+	<thead>
+	<tr>
+		<th colspan="5">
+		<input st-search="" class="form-control" placeholder="Type any text to filter" type="text" reg-ex-input reg-ex="^[a-zA-Z0-9]+$"/></th>
+	</tr>
+	<tr>
+		<th>First Name</th>
+		<th>Middle Name</th>
+		<th>Last Name</th>
+		<th>Date of Birth</th>
+		<th>Age</th>
+		<th>Gender</th>
+		<th>Address</th>
+		<th>Phone Number</th>
+		<th>Care Specialization</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="row in displayedCollection">
+		<td>{{row.firstName}}</td>
+		<td>{{row.middleName}}</td>
+		<td>{{row.lastName}}</td>
+		<td>{{row.dob  | date:'dd-MM-yyyy'}}</td>
+		<td>{{row.age}}</td>
+		<td>{{row.gender}}</td>
+		<td>{{row.address}}</td>
+		<td>{{row.phNum}}</td>
+		<td>{{row.careSpec}}</td>
+	</tr>
+	</tbody>
+</table>
+ </div>                   
+</div>
+<!-- /.row -->

@@ -1,0 +1,36 @@
+body {
+    margin-top: 85px;
+    background-color: rgba(76, 78, 75, 0.91);
+    height: 100%;
+}
+@media(min-width:768px) {
+    body {
+        margin-top: 50px;
+    }
+}
+.top-nav>li {
+    display: inline-block;
+    float: left;
+}
+.top-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+    color: #999;
+}
+.top-nav>.active{
+	background: #eee;
+}
+.top-nav {
+    padding: 0 15px;
+}
+#page-wrapper {
+    width: 100%;
+    padding: 0;
+    background-color: #fff;
+    height: 90%;
+}
+#wrapper{
+	height: 100%;
+}
+

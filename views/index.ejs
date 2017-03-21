@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="bower_components\font-awesome\css\font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components\bootstrap\dist\css\bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets\iMinify.css">
+    <script src="bower_components\jquery\dist\jquery.min.js"></script>
+    <script src="bower_components\angular\angular.min.js"></script>
+    <script src="bower_components\angular-route\angular-route.min.js"></script>
+    <script src="bower_components\bootstrap\dist\js\bootstrap.min.js"></script>
+    <script src="bower_components\angular-bootstrap\ui-bootstrap-tpls.min.js"></script>
+    <script src="bower_components\angular-smart-table\dist\smart-table.min.js"></script>
+    
+    <script src="angularApp.js"></script>
+    <script src="javascripts\controllers\detailsController.js"></script>
+    <script src="javascripts\controllers\mainController.js"></script>
+  </head>
+  <body ng-app="patientRegApp">
+  <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavController">
+            <div class="navbar-header">
+                
+                <a class="navbar-brand" href="index.html">Patient Registration -iMinify</a>
+            </div>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+                <ul class="nav navbar-right top-nav">
+                    <li ng-class="{'home':'active'}[activeClass]">
+                        <a href="#/patientDetails" ng-click ="changeActiveclass('home')"><i class="fa fa-fw fa-home"></i>Home</a>
+                    </li>
+                    <li ng-class="{'register':'active'}[activeClass]">
+                        <a href="#/registerPatient" ng-click ="changeActiveclass('register')"><i class="fa fa-fw fa-user-plus"></i>Register</a>
+                    </li>
+				</ul>
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid" ng-view>
+
+                
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+</body>
+</html>
